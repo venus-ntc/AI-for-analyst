@@ -1,9 +1,6 @@
 # BÁO CÁO CÔNG VIỆC – NGUYỄN THỊ CẨM VÂN
 
 ## 1. Phạm vi công việc
-
-Theo Meeting Minute 2, phần công việc của Nguyễn Thị Cẩm Vân gồm:
-
 - Nghiên cứu và mô hình hóa các thực thể cốt lõi trong nghiệp vụ bán lẻ: Store, Warehouse, Category, Product, Vendor, Sales.
 - Tìm kiếm và chuẩn bị tập dữ liệu mẫu bán lẻ thực tế từ Kaggle.
 - Nghiên cứu pipeline nạp dữ liệu đa định dạng PDF, CSV/Excel và thiết kế kết nối database, bao gồm PostgreSQL.
@@ -13,7 +10,7 @@ Phạm vi thực nghiệm của phần này tập trung vào dữ liệu Sales v
 
 ## 2. Lựa chọn dataset
 
-Dataset được sử dụng là Maven Toys / Mexico Toy Sales.
+Dataset được sử dụng là Maven Toys.
 
 Các file dữ liệu sử dụng:
 
@@ -37,8 +34,6 @@ Quy mô dữ liệu sau khi profiling:
 | Calendar | 638 |
 
 Dữ liệu Sales bao phủ giai đoạn 01/01/2022 đến 30/09/2023.
-
-Quy mô 829,262 dòng Sales đủ để mô phỏng một workload phân tích bán lẻ thực tế nhưng vẫn phù hợp để chạy local bằng PostgreSQL. Khi demo không đưa toàn bộ các dòng dữ liệu vào prompt của LLM; PostgreSQL thực hiện việc truy vấn và chỉ trả về kết quả cần thiết.
 
 ## 3. Data Profiling
 
@@ -184,7 +179,6 @@ Lợi nhuận gộp:
 Gross Profit = Units × (Product Price − Product Cost)
 ```
 
-Không lưu Revenue thành một cột vật lý trong fact table để tránh lặp dữ liệu có thể tính được từ Product.
 
 ### 4.8. Inventory
 
@@ -392,7 +386,7 @@ Chunking
 Embedding / Vector Store
 ```
 
-Phần embedding, vector database và RAG thuộc luồng xử lý tri thức của hệ thống; phần công việc của Vân tập trung vào ingestion, metadata và database connectivity.
+Phần embedding, vector database và RAG thuộc luồng xử lý tri thức của hệ thống
 
 ## 11. PostgreSQL connection interface
 

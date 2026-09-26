@@ -22,5 +22,3 @@ retail-ai/
     ├── BUSINESS_GLOSSARY.md
     └── TEXT_TO_SQL_TEST.md
 ```
-
-Sau đó chỉnh lại tên/version công nghệ nếu nhóm thay đổi implementation.

@@ -1,15 +1,10 @@
 # Installation & Run Guide – Retail AI
 
 ## 1. Mục tiêu
-
-Tài liệu này hướng dẫn chạy phần Data Preparation của Vân bằng:
-
 - Visual Studio Code
 - Python
 - PostgreSQL local
 - pgAdmin4 để kiểm tra database
-
-PostgreSQL vẫn chạy như Windows service. VS Code chỉ là môi trường viết code/chạy SQL và Python.
 
 ## 2. Prerequisites
 
