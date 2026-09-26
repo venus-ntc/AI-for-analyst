@@ -1,3 +1,4 @@
+## -------- test khi cài đặt postgres
 # import os
 # import psycopg
 # from dotenv import load_dotenv
@@ -22,6 +23,8 @@
 #     print(version)
 
 # conn.close()
+
+##----------- test sau khi tạo database
 import os
 import psycopg
 from dotenv import load_dotenv
