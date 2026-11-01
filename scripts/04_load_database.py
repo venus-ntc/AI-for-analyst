@@ -14,7 +14,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROCESSED_DIR = BASE_DIR / "data" / "processed"
 SCHEMA_FILE = BASE_DIR / "sql" / "01_schema.sql"
-
+INDEX_FILE = BASE_DIR / "sql" / "02_indexes.sql"
 
 # ============================================================
 # DATABASE CONNECTION
@@ -29,22 +29,6 @@ conn = psycopg.connect(
 )
 
 print("Connected to PostgreSQL.")
-
-with conn.cursor() as cur:
-    cur.execute("""
-        TRUNCATE TABLE
-            fact_inventory_current,
-            fact_sales,
-            dim_product,
-            dim_category,
-            dim_date,
-            dim_store
-        RESTART IDENTITY CASCADE;
-    """)
-
-conn.commit()
-
-print("Existing data cleared.")
 
 # ============================================================
 # CREATE TABLES
@@ -61,6 +45,25 @@ with conn.cursor() as cur:
 conn.commit()
 
 print("Database schema created.")
+
+# ============================================================
+# CLEAR EXISTING DATA
+# ============================================================
+with conn.cursor() as cur:
+    cur.execute("""
+        TRUNCATE TABLE
+            fact_inventory_current,
+            fact_sales,
+            dim_product,
+            dim_category,
+            dim_date,
+            dim_store
+        RESTART IDENTITY CASCADE;
+    """)
+
+conn.commit()
+
+print("Existing data cleared.")
 
 
 # ============================================================
@@ -131,6 +134,21 @@ for table_name, filename in tables:
         f"{table_name}: loaded"
     )
 
+
+# ============================================================
+# CREATE INDEXES
+# ============================================================
+
+index_sql = INDEX_FILE.read_text(
+    encoding="utf-8"
+)
+
+with conn.cursor() as cur:
+    cur.execute(index_sql)
+
+conn.commit()
+
+print("Indexes created.")
 
 conn.close()
 
